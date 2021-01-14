@@ -1,0 +1,14 @@
+(node:5156) [DEP0005] DeprecationWarning: Buffer() is deprecated due to security and usability issues. Please use the Buffer.alloc(), Buffer.allocUnsafe(), or Buffer.from() methods instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+Application has thrown an uncaught exception and is terminated:
+Error: Cannot enqueue Handshake after invoking quit.
+    at Protocol._validateEnqueue (E:\IdeaProjects\nodelearn\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:215:16)
+    at Protocol._enqueue (E:\IdeaProjects\nodelearn\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:138:13)
+    at Protocol.handshake (E:\IdeaProjects\nodelearn\node_modules\_mysql@2.18.1@mysql\lib\protocol\Protocol.js:51:23)
+    at Connection.connect (E:\IdeaProjects\nodelearn\node_modules\_mysql@2.18.1@mysql\lib\Connection.js:116:18)
+    at MysqlConnection.searchFunc (E:\IdeaProjects\nodelearn\mysqlConnection.js:15:20)
+    at E:\IdeaProjects\nodelearn\app.js:28:15
+    at Layer.handle [as handle_request] (E:\IdeaProjects\nodelearn\node_modules\_express@4.17.1@express\lib\router\layer.js:95:5)
+    at next (E:\IdeaProjects\nodelearn\node_modules\_express@4.17.1@express\lib\router\route.js:137:13)
+    at Route.dispatch (E:\IdeaProjects\nodelearn\node_modules\_express@4.17.1@express\lib\router\route.js:112:3)
+    at Layer.handle [as handle_request] (E:\IdeaProjects\nodelearn\node_modules\_express@4.17.1@express\lib\router\layer.js:95:5)

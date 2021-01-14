@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>菜鸟教程(runoob.com)</title>
+
+    <!-- import Vue.js -->
+    <script src="//vuejs.org/js/vue.min.js"></script>
+    <!-- import stylesheet -->
+    <link rel="stylesheet" href="//unpkg.com/view-design/dist/styles/iview.css">
+    <!-- import iView -->
+    <script src="//unpkg.com/view-design/dist/iview.min.js"></script>
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+</head>
+<body>
+<!--<h1>我的第一个标题</h1>-->
+<!--<p>我的第一个段落。</p>-->
+<!--<form>-->
+<!--    <input type="time"/>-->
+<!--    <input type="submit" value="提交">-->
+<!--</form>-->
+
+
+
+<div id="demo">
+    <row><i-col span="24" style="text-align: center;height: 30px;margin: 20px 5px">表格</i-col></row>
+    <i-table :columns="tableColumns" :data="tableData"></i-table>
+</div>
+
+
+<script>
+    var url="http://192.168.253.1:8888/";
+
+    var vm = new Vue({
+        el:"#demo",
+        data:{
+            tableColumns:[
+                {
+                    type: 'selection',
+                    width: 60,
+                    align: 'center'
+                },
+                {
+                    title: 'id',
+                    key: 'id'
+                },
+                {
+                    title: 'name',
+                    key: 'name'
+                },
+                {
+                    title: 'url',
+                    key: 'url',
+                    render: function(h, params){
+                        return h('a', {href:params.row.url},params.row.url);
+                    }
+                },
+                {
+                    title: 'alexa',
+                    key: 'alexa'
+                },
+                {
+                    title: 'country',
+                    key: 'country'
+                }
+            ],
+            tableData:[]
+        },
+        mounted:function(){
+            this.loadData();
+        },
+        methods:{
+            loadData:function () {
+                var that = this;
+                axios.get(url + "/listUsers")
+                    .then(function (res) {
+                        var data = res.data;
+                        console.log(data);
+                        that.tableData = data;
+                    })
+                    .catch(function (err) {
+                        console.log(err);
+                    })
+            }
+        }
+    })
+</script>
+</body>
+</html>
